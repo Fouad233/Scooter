@@ -40,6 +40,13 @@ Le site est disponible sur [http://localhost:3000](http://localhost:3000).
    - `service_role` key (secrète, jamais exposée au navigateur) → `SUPABASE_SERVICE_ROLE_KEY`
 4. Si la table `reservations` existait déjà avec des colonnes liées à un ancien paiement en ligne (PayPal), exécute aussi `supabase/migration_suppression_paypal.sql` pour les supprimer.
 
+## Ajouter des photos de scooters
+
+1. Dans Supabase, va dans **Storage** et crée un bucket (ex. `scooters`), en mode **Public**.
+2. Upload tes photos dans ce bucket.
+3. Pour chaque photo, clique sur **Copy URL** pour récupérer son URL publique (ressemble à `https://xxxx.supabase.co/storage/v1/object/public/scooters/photo.jpg`).
+4. Dans **Table Editor > scooters**, édite la colonne `photo_urls` du scooter concerné et colle l'URL dans le tableau (ex. `["https://...jpg"]`). La première URL du tableau est utilisée comme photo principale.
+
 ## Variables d'environnement
 
 Voir `.env.example` pour la liste complète et leur description.

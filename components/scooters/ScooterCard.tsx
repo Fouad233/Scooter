@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Scooter } from "@/lib/types";
+import { ScooterPhoto } from "@/components/scooters/ScooterPhoto";
 
 export function ScooterCard({ scooter }: { scooter: Scooter }) {
   return (
@@ -7,9 +8,7 @@ export function ScooterCard({ scooter }: { scooter: Scooter }) {
       href={`/scooters/${scooter.id}`}
       className="group block overflow-hidden rounded-2xl border border-blue-900/10 bg-white shadow-sm transition-shadow hover:shadow-md"
     >
-      <div className="flex aspect-[4/3] items-center justify-center bg-blue-900/5 text-blue-900/30">
-        Photo à venir
-      </div>
+      <ScooterPhoto url={scooter.photo_urls?.[0]} alt={scooter.nom} className="aspect-[4/3]" />
       <div className="p-4">
         <h3 className="font-semibold text-blue-950">{scooter.nom}</h3>
         <p className="text-sm text-blue-900/60">

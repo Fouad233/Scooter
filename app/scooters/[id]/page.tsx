@@ -5,6 +5,7 @@ import { supabaseServer } from "@/lib/supabase/server";
 import { Scooter } from "@/lib/types";
 import { ScooterSpecs } from "@/components/scooters/ScooterSpecs";
 import { AvailabilityCalendar } from "@/components/scooters/AvailabilityCalendar";
+import { ScooterPhoto } from "@/components/scooters/ScooterPhoto";
 
 export const revalidate = 0;
 
@@ -48,9 +49,11 @@ export default async function ScooterDetailPage({
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <div className="grid gap-8 md:grid-cols-2">
-        <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-blue-900/5 text-blue-900/30">
-          Photo à venir
-        </div>
+        <ScooterPhoto
+          url={scooter.photo_urls?.[0]}
+          alt={scooter.nom}
+          className="aspect-[4/3] rounded-2xl"
+        />
 
         <div>
           <h1 className="text-3xl font-bold text-blue-950">{scooter.nom}</h1>
