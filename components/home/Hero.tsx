@@ -1,6 +1,18 @@
 import Link from "next/link";
+import { supabaseServer } from "@/lib/supabase/server";
+import { ScooterPhoto } from "@/components/scooters/ScooterPhoto";
 
-export function Hero() {
+export async function Hero() {
+  const { data: scooter } = await supabaseServer
+    .from("scooters")
+    .select("nom, photo_urls")
+    .eq("actif", true)
+    .order("created_at", { ascending: true })
+    .limit(1)
+    .maybeSingle();
+
+  const photoUrl = scooter?.photo_urls?.[0];
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:py-24 md:grid-cols-2 md:items-center">
@@ -31,11 +43,11 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-blue-900/5 shadow-inner">
-          <div className="flex h-full items-center justify-center text-blue-900/30">
-            Photo du scooter à venir
-          </div>
-        </div>
+        <ScooterPhoto
+          url={photoUrl}
+          alt={scooter?.nom ?? "Scooter"}
+          className="relative aspect-[4/3] w-full rounded-3xl bg-blue-900/5 shadow-inner"
+        />
       </div>
     </section>
   );
