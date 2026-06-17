@@ -58,7 +58,10 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 px-4 py-4 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} TetouanScoot — Tétouan, Maroc
+        © {new Date().getFullYear()} TetouanScoot — Tétouan, Maroc ·{" "}
+        <Link href="/admin" className="hover:text-white">
+          Espace admin
+        </Link>
       </div>
     </footer>
   );
