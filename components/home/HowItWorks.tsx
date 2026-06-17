@@ -7,14 +7,13 @@ const etapes = [
   {
     numero: "2",
     titre: "Réservez en ligne",
-    description:
-      "Sélectionnez vos dates, réglez un acompte sécurisé par PayPal.",
+    description: "Sélectionnez vos dates et envoyez votre demande, sans paiement en ligne.",
   },
   {
     numero: "3",
     titre: "Récupérez-le à Tétouan",
     description:
-      "Le solde se règle sur place au moment de la prise du scooter.",
+      "Réglez le montant total et la caution sur place, en espèces ou par carte.",
   },
 ];
 

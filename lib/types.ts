@@ -29,9 +29,6 @@ export interface Reservation {
   date_debut: string;
   date_fin: string;
   statut: StatutReservation;
-  acompte_montant: number | null;
-  acompte_paye: boolean;
-  paypal_order_id: string | null;
   montant_total: number;
   created_at: string;
 }

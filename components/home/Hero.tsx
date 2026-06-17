@@ -12,8 +12,8 @@ export function Hero() {
             Louez un scooter à Tétouan en quelques clics
           </h1>
           <p className="mt-4 text-lg text-blue-900/70">
-            Réservez en ligne, payez un acompte sécurisé, récupérez votre
-            scooter sur place. Simple, rapide, sans surprise.
+            Réservez en ligne gratuitement, payez tout sur place. Simple,
+            rapide, sans surprise.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link

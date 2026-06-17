@@ -80,11 +80,12 @@ export default async function TarifsPage() {
       <div className="mt-10 rounded-2xl bg-blue-900/5 p-6 text-sm text-blue-900/80">
         <h2 className="font-semibold text-blue-950">Comment fonctionne la caution ?</h2>
         <p className="mt-2">
-          Un acompte est versé en ligne via PayPal pour confirmer votre
-          réservation. Le solde et la caution sont réglés sur place, en
-          espèces ou par carte, lors de la prise en main du scooter. La
-          caution vous est intégralement restituée au retour du véhicule,
-          sous réserve qu&apos;il soit rendu dans l&apos;état du départ.
+          La réservation en ligne est gratuite et sans engagement de
+          paiement. Le montant total de la location et la caution sont
+          réglés sur place, en espèces ou par carte, lors de la prise en
+          main du scooter. La caution vous est intégralement restituée au
+          retour du véhicule, sous réserve qu&apos;il soit rendu dans
+          l&apos;état du départ.
         </p>
       </div>
     </div>

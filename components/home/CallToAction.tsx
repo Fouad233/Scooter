@@ -8,8 +8,8 @@ export function CallToAction() {
           Prêt à explorer Tétouan en scooter ?
         </h2>
         <p className="mt-3 text-blue-100">
-          Réservez votre scooter dès maintenant, l&apos;acompte est sécurisé
-          et le solde se règle sur place.
+          Réservez votre scooter dès maintenant, sans paiement en ligne. Tout
+          se règle sur place.
         </p>
         <Link
           href="/scooters"

@@ -25,9 +25,6 @@ create table if not exists reservations (
   date_fin date not null,
   statut text not null default 'pending'
     check (statut in ('pending','confirmed','paid','cancelled','completed')),
-  acompte_montant numeric,
-  acompte_paye boolean not null default false,
-  paypal_order_id text,
   montant_total numeric not null,
   created_at timestamptz default now()
 );

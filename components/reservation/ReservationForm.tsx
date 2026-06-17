@@ -125,8 +125,9 @@ export function ReservationForm({ scooter }: { scooter: Scooter }) {
       </Button>
 
       <p className="text-xs text-blue-900/60">
-        Votre demande sera confirmée manuellement par notre équipe. Vous
-        recevrez ensuite un lien pour verser l&apos;acompte via PayPal.
+        Votre demande sera confirmée manuellement par notre équipe par email
+        ou WhatsApp. Le paiement total et la caution se règlent sur place,
+        au moment de la prise du scooter.
       </p>
     </form>
   );

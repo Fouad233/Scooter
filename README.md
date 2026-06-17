@@ -1,20 +1,18 @@
 # Scooter — Location de scooters à Tétouan
 
-Site web pour la location de scooters à Tétouan (Maroc) : catalogue, réservation en ligne avec calendrier de disponibilité, acompte payé via PayPal et solde réglé sur place.
+Site web pour la location de scooters à Tétouan (Maroc) : catalogue, réservation en ligne avec calendrier de disponibilité, paiement total et caution réglés sur place.
 
 ## Stack technique
 
 - [Next.js 15](https://nextjs.org/) (App Router) + TypeScript
 - [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
 - [Supabase](https://supabase.com/) (base de données Postgres)
-- [PayPal](https://developer.paypal.com/) (`@paypal/react-paypal-js`) pour l'acompte
 - Déploiement sur [Vercel](https://vercel.com/)
 
 ## Prérequis
 
 - Node.js 20+
 - Un compte [Supabase](https://supabase.com/) (gratuit)
-- Un compte [PayPal Developer](https://developer.paypal.com/) (gratuit, mode Sandbox pour les tests)
 - Un compte [Vercel](https://vercel.com/) (gratuit) pour le déploiement
 
 ## Installation locale
@@ -24,7 +22,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Remplis `.env.local` avec tes propres clés (voir les sections Configuration Supabase et Configuration PayPal ci-dessous).
+Remplis `.env.local` avec tes propres clés (voir la section Configuration Supabase ci-dessous).
 
 ```bash
 npm run dev
@@ -40,12 +38,7 @@ Le site est disponible sur [http://localhost:3000](http://localhost:3000).
    - `Project URL` → `NEXT_PUBLIC_SUPABASE_URL`
    - `anon public` key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `service_role` key (secrète, jamais exposée au navigateur) → `SUPABASE_SERVICE_ROLE_KEY`
-
-## Configuration PayPal
-
-1. Crée une app sur [developer.paypal.com](https://developer.paypal.com/) en mode **Sandbox** pour développer/tester.
-2. Récupère le **Client ID** → `NEXT_PUBLIC_PAYPAL_CLIENT_ID` et le **Secret** → `PAYPAL_CLIENT_SECRET`.
-3. Une fois prêt à encaisser réellement, bascule en mode **Live** et remplace les clés.
+4. Si la table `reservations` existait déjà avec des colonnes liées à un ancien paiement en ligne (PayPal), exécute aussi `supabase/migration_suppression_paypal.sql` pour les supprimer.
 
 ## Variables d'environnement
 
@@ -72,4 +65,4 @@ public/         images et fichiers statiques
 - **Composant** : une fonction qui retourne du HTML (JSX). Réutilisable, ex. `<ScooterCard />`.
 - **Server Component** (par défaut dans `app/`) : rendu côté serveur, peut lire la base de données directement, pas de JavaScript envoyé au navigateur pour lui.
 - **Client Component** (`"use client"` en haut du fichier) : nécessaire dès qu'il y a de l'interactivité (clic, formulaire, state).
-- **Route API** (`app/api/.../route.ts`) : équivalent d'un petit serveur backend, appelé depuis le navigateur ou un service externe (ex. PayPal).
+- **Route API** (`app/api/.../route.ts`) : équivalent d'un petit serveur backend, appelé depuis le navigateur pour créer une réservation en toute sécurité.

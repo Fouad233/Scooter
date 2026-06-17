@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TetouanScoot — Location de scooters à Tétouan",
   description:
-    "Louez un scooter à Tétouan en toute simplicité : réservation en ligne, acompte sécurisé, prise en main sur place.",
+    "Louez un scooter à Tétouan en toute simplicité : réservation en ligne, paiement et caution sur place.",
 };
 
 export default function RootLayout({

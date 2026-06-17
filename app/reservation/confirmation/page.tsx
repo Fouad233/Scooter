@@ -13,8 +13,8 @@ export default function ConfirmationPage() {
       </h1>
       <p className="mt-4 text-blue-900/70">
         Notre équipe va vérifier la disponibilité et vous contactera très
-        rapidement par email ou WhatsApp pour confirmer votre réservation et
-        vous indiquer comment verser l&apos;acompte.
+        rapidement par email ou WhatsApp pour confirmer votre réservation.
+        Le paiement total et la caution se règlent sur place.
       </p>
       <Link
         href="/"
