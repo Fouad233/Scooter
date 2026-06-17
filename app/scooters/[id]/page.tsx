@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { supabaseServer } from "@/lib/supabase/server";
 import { Scooter } from "@/lib/types";
 import { ScooterSpecs } from "@/components/scooters/ScooterSpecs";
+import { AvailabilityCalendar } from "@/components/scooters/AvailabilityCalendar";
 
 export const revalidate = 0;
 
@@ -69,6 +70,16 @@ export default async function ScooterDetailPage({
           >
             Réserver ce scooter
           </Link>
+        </div>
+      </div>
+
+      <div className="mt-12">
+        <h2 className="text-xl font-bold text-blue-950">Disponibilités</h2>
+        <p className="mt-1 text-sm text-blue-900/60">
+          Consultez les dates déjà réservées avant de faire votre demande.
+        </p>
+        <div className="mt-4">
+          <AvailabilityCalendar scooterId={scooter.id} />
         </div>
       </div>
     </div>
