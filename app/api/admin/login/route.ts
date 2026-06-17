@@ -6,13 +6,6 @@ export async function POST(request: Request) {
   const motDePasseAttendu = process.env.ADMIN_PASSWORD?.trim();
   const saisie = motDePasse?.trim();
 
-  console.log("[admin login debug]", {
-    longueurAttendue: motDePasseAttendu?.length ?? 0,
-    longueurSaisie: saisie?.length ?? 0,
-    correspond: saisie === motDePasseAttendu,
-    variableDefinie: Boolean(process.env.ADMIN_PASSWORD),
-  });
-
   if (!motDePasseAttendu || saisie !== motDePasseAttendu) {
     return NextResponse.json({ error: "Mot de passe incorrect." }, { status: 401 });
   }

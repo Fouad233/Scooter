@@ -1,13 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [motDePasse, setMotDePasse] = useState("");
   const [erreur, setErreur] = useState<string | null>(null);
   const [envoi, setEnvoi] = useState(false);
@@ -17,21 +15,26 @@ export default function AdminLoginPage() {
     setEnvoi(true);
     setErreur(null);
 
-    const response = await fetch("/api/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ motDePasse }),
-    });
+    try {
+      const response = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ motDePasse }),
+      });
 
-    setEnvoi(false);
+      if (!response.ok) {
+        setEnvoi(false);
+        setErreur("Mot de passe incorrect.");
+        return;
+      }
 
-    if (!response.ok) {
-      setErreur("Mot de passe incorrect.");
-      return;
+      // Navigation complète (pas router.push) pour éviter de réutiliser
+      // un cache de route Next.js qui daterait d'avant la connexion.
+      window.location.href = "/admin";
+    } catch {
+      setEnvoi(false);
+      setErreur("Une erreur est survenue. Réessayez.");
     }
-
-    router.push("/admin");
-    router.refresh();
   }
 
   return (
