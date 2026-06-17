@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -18,10 +19,39 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
   const [prixMois, setPrixMois] = useState(scooter?.prix_mois?.toString() ?? "");
   const [caution, setCaution] = useState(scooter?.caution?.toString() ?? "");
   const [description, setDescription] = useState(scooter?.description ?? "");
-  const [photoUrls, setPhotoUrls] = useState((scooter?.photo_urls ?? []).join("\n"));
+  const [photoUrls, setPhotoUrls] = useState<string[]>(scooter?.photo_urls ?? []);
   const [actif, setActif] = useState(scooter?.actif ?? true);
   const [envoi, setEnvoi] = useState(false);
   const [erreur, setErreur] = useState<string | null>(null);
+  const [envoiPhoto, setEnvoiPhoto] = useState(false);
+  const inputFichierRef = useRef<HTMLInputElement>(null);
+
+  async function handleFichiers(fichiers: FileList | null) {
+    if (!fichiers || fichiers.length === 0) return;
+    setEnvoiPhoto(true);
+    setErreur(null);
+
+    try {
+      for (const fichier of Array.from(fichiers)) {
+        const formData = new FormData();
+        formData.append("fichier", fichier);
+        const response = await fetch("/api/admin/upload", { method: "POST", body: formData });
+        const resultat = await response.json();
+        if (!response.ok) {
+          setErreur(resultat.error ?? "Échec de l'envoi d'une image.");
+          continue;
+        }
+        setPhotoUrls((urls) => [...urls, resultat.url]);
+      }
+    } finally {
+      setEnvoiPhoto(false);
+      if (inputFichierRef.current) inputFichierRef.current.value = "";
+    }
+  }
+
+  function supprimerPhoto(index: number) {
+    setPhotoUrls((urls) => urls.filter((_, i) => i !== index));
+  }
 
   async function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -37,7 +67,7 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
       prix_mois: prixMois ? Number(prixMois) : null,
       caution: Number(caution),
       description,
-      photo_urls: photoUrls.split("\n").map((url) => url.trim()).filter(Boolean),
+      photo_urls: photoUrls,
       actif,
     };
 
@@ -104,16 +134,40 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
       </div>
 
       <div>
-        <Label htmlFor="photoUrls" className="mb-2 block">
-          URLs des photos (une par ligne, la première est la photo principale)
-        </Label>
-        <Textarea
-          id="photoUrls"
-          rows={3}
-          value={photoUrls}
-          onChange={(e) => setPhotoUrls(e.target.value)}
-          placeholder="https://xxxx.supabase.co/storage/v1/object/public/scooters/photo.jpg"
+        <Label className="mb-2 block">Photos (la première est la photo principale)</Label>
+
+        {photoUrls.length > 0 && (
+          <div className="mb-3 grid grid-cols-3 gap-3 sm:grid-cols-4">
+            {photoUrls.map((url, index) => (
+              <div key={url} className="group relative aspect-square overflow-hidden rounded-lg border border-border">
+                <Image src={url} alt="" fill className="object-cover" unoptimized />
+                {index === 0 && (
+                  <span className="absolute left-1 top-1 rounded bg-blue-950/80 px-1.5 py-0.5 text-[10px] text-white">
+                    Principale
+                  </span>
+                )}
+                <button
+                  type="button"
+                  onClick={() => supprimerPhoto(index)}
+                  className="absolute right-1 top-1 rounded-full bg-red-600 px-1.5 py-0.5 text-[10px] text-white opacity-0 transition group-hover:opacity-100"
+                >
+                  Retirer
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <input
+          ref={inputFichierRef}
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={(e) => handleFichiers(e.target.files)}
+          className="block w-full text-sm"
+          disabled={envoiPhoto}
         />
+        {envoiPhoto && <p className="mt-1 text-sm text-muted-foreground">Envoi en cours...</p>}
       </div>
 
       {erreur && <p className="text-sm text-red-600">{erreur}</p>}

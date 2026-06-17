@@ -42,10 +42,9 @@ Le site est disponible sur [http://localhost:3000](http://localhost:3000).
 
 ## Ajouter des photos de scooters
 
-1. Dans Supabase, va dans **Storage** et crée un bucket (ex. `scooters`), en mode **Public**.
-2. Upload tes photos dans ce bucket.
-3. Pour chaque photo, clique sur **Copy URL** pour récupérer son URL publique (ressemble à `https://xxxx.supabase.co/storage/v1/object/public/scooters/photo.jpg`).
-4. Dans **Table Editor > scooters**, édite la colonne `photo_urls` du scooter concerné et colle l'URL dans le tableau (ex. `["https://...jpg"]`). La première URL du tableau est utilisée comme photo principale.
+Depuis l'espace admin (`/admin/scooters`), ouvre un scooter (ou crée-en un) et utilise le champ d'envoi de photos : les images sont automatiquement téléversées dans Supabase Storage. Plus besoin de passer par Supabase manuellement.
+
+Prérequis (une seule fois) : dans Supabase, va dans **Storage** et crée un bucket nommé `scooters`, en mode **Public**. C'est dans ce bucket que les photos envoyées depuis l'admin seront stockées.
 
 ## Variables d'environnement
 
