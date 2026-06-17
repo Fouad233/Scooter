@@ -21,11 +21,16 @@ export async function PATCH(
       caution: body.caution,
       description: body.description || null,
       actif: body.actif ?? true,
+      vedette: body.vedette ?? false,
     })
     .eq("id", id);
 
   if (error) {
     return NextResponse.json({ error: "Erreur lors de la mise à jour." }, { status: 500 });
+  }
+
+  if (body.vedette) {
+    await supabaseServer.from("scooters").update({ vedette: false }).neq("id", id);
   }
 
   return NextResponse.json({ ok: true });

@@ -17,12 +17,17 @@ export async function POST(request: Request) {
       caution: body.caution,
       description: body.description || null,
       actif: body.actif ?? true,
+      vedette: body.vedette ?? false,
     })
     .select()
     .single();
 
   if (error) {
     return NextResponse.json({ error: "Erreur lors de la création du scooter." }, { status: 500 });
+  }
+
+  if (body.vedette) {
+    await supabaseServer.from("scooters").update({ vedette: false }).neq("id", data.id);
   }
 
   return NextResponse.json({ scooter: data });

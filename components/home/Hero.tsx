@@ -7,6 +7,7 @@ export async function Hero() {
     .from("scooters")
     .select("nom, photo_urls")
     .eq("actif", true)
+    .order("vedette", { ascending: false })
     .order("created_at", { ascending: true })
     .limit(1)
     .maybeSingle();

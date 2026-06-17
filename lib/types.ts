@@ -17,6 +17,7 @@ export interface Scooter {
   caution: number;
   description: string | null;
   actif: boolean;
+  vedette: boolean;
   created_at: string;
 }
 

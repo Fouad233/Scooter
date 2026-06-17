@@ -21,6 +21,7 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
   const [description, setDescription] = useState(scooter?.description ?? "");
   const [photoUrls, setPhotoUrls] = useState<string[]>(scooter?.photo_urls ?? []);
   const [actif, setActif] = useState(scooter?.actif ?? true);
+  const [vedette, setVedette] = useState(scooter?.vedette ?? false);
   const [envoi, setEnvoi] = useState(false);
   const [erreur, setErreur] = useState<string | null>(null);
   const [envoiPhoto, setEnvoiPhoto] = useState(false);
@@ -69,6 +70,7 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
       description,
       photo_urls: photoUrls,
       actif,
+      vedette,
     };
 
     const url = scooter ? `/api/admin/scooters/${scooter.id}` : "/api/admin/scooters";
@@ -125,6 +127,10 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
         <div className="flex items-center gap-2 pt-6">
           <input id="actif" type="checkbox" checked={actif} onChange={(e) => setActif(e.target.checked)} />
           <Label htmlFor="actif">Visible sur le site</Label>
+        </div>
+        <div className="flex items-center gap-2">
+          <input id="vedette" type="checkbox" checked={vedette} onChange={(e) => setVedette(e.target.checked)} />
+          <Label htmlFor="vedette">Afficher sur la page d&apos;accueil</Label>
         </div>
       </div>
 

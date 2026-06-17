@@ -12,6 +12,7 @@ create table if not exists scooters (
   caution numeric not null,
   description text,
   actif boolean not null default true,
+  vedette boolean not null default false,
   created_at timestamptz default now()
 );
 
