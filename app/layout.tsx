@@ -15,10 +15,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const titre = "TetouanScoot — Location de scooters à Tétouan";
+const description =
+  "Louez un scooter à Tétouan en toute simplicité : réservation en ligne, paiement et caution sur place.";
+
 export const metadata: Metadata = {
-  title: "TetouanScoot — Location de scooters à Tétouan",
-  description:
-    "Louez un scooter à Tétouan en toute simplicité : réservation en ligne, paiement et caution sur place.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: titre,
+    template: "%s",
+  },
+  description,
+  openGraph: {
+    title: titre,
+    description,
+    url: siteUrl,
+    siteName: "TetouanScoot",
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: titre,
+    description,
+  },
 };
 
 export default function RootLayout({
