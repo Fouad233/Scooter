@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     .upload(cheminFichier, fichier, { contentType: fichier.type });
 
   if (error) {
-    return NextResponse.json({ error: "Échec de l'envoi de l'image." }, { status: 500 });
+    return NextResponse.json({ error: `Échec de l'envoi de l'image : ${error.message}` }, { status: 500 });
   }
 
   const { data } = supabaseServer.storage.from(BUCKET).getPublicUrl(cheminFichier);
