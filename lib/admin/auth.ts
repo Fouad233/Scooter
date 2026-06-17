@@ -2,7 +2,7 @@ const SESSION_VALUE = "admin-authenticated";
 export const ADMIN_SESSION_COOKIE = "admin_session";
 
 function getSecret() {
-  return process.env.ADMIN_PASSWORD ?? "";
+  return (process.env.ADMIN_PASSWORD ?? "").trim();
 }
 
 async function hmacSha256(secret: string, message: string) {
