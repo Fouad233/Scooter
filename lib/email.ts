@@ -1,11 +1,20 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { format, parseISO } from "date-fns";
 import { fr } from "date-fns/locale";
 
-const EXPEDITEUR = process.env.RESEND_FROM_EMAIL ?? "onboarding@resend.dev";
-
 function formaterDate(date: string) {
   return format(parseISO(date), "d MMMM yyyy", { locale: fr });
+}
+
+function creerTransporteur() {
+  const utilisateur = process.env.GMAIL_USER;
+  const motDePasse = process.env.GMAIL_APP_PASSWORD;
+  if (!utilisateur || !motDePasse) return null;
+
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: { user: utilisateur, pass: motDePasse },
+  });
 }
 
 export async function envoyerEmailConfirmation({
@@ -23,27 +32,27 @@ export async function envoyerEmailConfirmation({
   dateFin: string;
   montantTotal: number;
 }) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) return { envoye: false, erreur: "RESEND_API_KEY non configurée." };
+  const transporteur = creerTransporteur();
+  if (!transporteur) return { envoye: false, erreur: "GMAIL_USER / GMAIL_APP_PASSWORD non configurés." };
 
-  const resend = new Resend(apiKey);
-
-  const { error } = await resend.emails.send({
-    from: `TetouanScoot <${EXPEDITEUR}>`,
-    to: destinataire,
-    subject: "Votre réservation TetouanScoot est confirmée",
-    html: `
-      <p>Bonjour ${clientNom},</p>
-      <p>Votre réservation pour le scooter <strong>${scooterNom}</strong> est confirmée :</p>
-      <ul>
-        <li>Du ${formaterDate(dateDebut)} au ${formaterDate(dateFin)}</li>
-        <li>Montant total à régler sur place : ${montantTotal} MAD</li>
-      </ul>
-      <p>Le paiement complet ainsi que la caution se règlent sur place, au moment de la prise du scooter.</p>
-      <p>À très vite !<br/>L'équipe TetouanScoot</p>
-    `,
-  });
-
-  if (error) return { envoye: false, erreur: error.message };
-  return { envoye: true };
+  try {
+    await transporteur.sendMail({
+      from: `TetouanScoot <${process.env.GMAIL_USER}>`,
+      to: destinataire,
+      subject: "Votre réservation TetouanScoot est confirmée",
+      html: `
+        <p>Bonjour ${clientNom},</p>
+        <p>Votre réservation pour le scooter <strong>${scooterNom}</strong> est confirmée :</p>
+        <ul>
+          <li>Du ${formaterDate(dateDebut)} au ${formaterDate(dateFin)}</li>
+          <li>Montant total à régler sur place : ${montantTotal} MAD</li>
+        </ul>
+        <p>Le paiement complet ainsi que la caution se règlent sur place, au moment de la prise du scooter.</p>
+        <p>À très vite !<br/>L'équipe TetouanScoot</p>
+      `,
+    });
+    return { envoye: true };
+  } catch (erreur) {
+    return { envoye: false, erreur: erreur instanceof Error ? erreur.message : "Erreur inconnue." };
+  }
 }

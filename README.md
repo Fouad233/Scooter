@@ -48,14 +48,14 @@ Prérequis (une seule fois) : dans Supabase, va dans **Storage** et crée un buc
 
 ## Email automatique au client à la confirmation
 
-Quand l'admin passe une réservation au statut "Confirmée" (`/admin`), un email de confirmation part automatiquement au client (dates, scooter, montant à régler sur place).
+Quand l'admin passe une réservation au statut "Confirmée" (`/admin`), un email de confirmation part automatiquement au client (dates, scooter, montant à régler sur place). L'envoi se fait via un compte Gmail (pas besoin de nom de domaine perso).
 
-Configuration (une seule fois) :
-1. Crée un compte gratuit sur [resend.com](https://resend.com) et génère une clé API (**API Keys**).
-2. Renseigne `RESEND_API_KEY` dans `.env.local` (en local) et dans les variables d'environnement Vercel (en production).
-3. Tant que tu n'as pas vérifié ton propre domaine sur Resend, laisse `RESEND_FROM_EMAIL=onboarding@resend.dev` (ça fonctionne pour tester, mais l'expéditeur affiché restera "resend.dev"). Pour un envoi avec ton propre nom de domaine, vérifie ton domaine sur Resend puis change cette variable (ex. `reservations@tetouanscoot.com`).
+Configuration (une seule fois), avec le compte Gmail que tu veux utiliser comme expéditeur :
+1. Active la validation en 2 étapes sur ce compte Google si ce n'est pas déjà fait (myaccount.google.com > Sécurité).
+2. Va sur [myaccount.google.com/apppasswords](https://myaccount.google.com/apppasswords) et crée un "mot de passe d'application" (nom au choix, ex. "TetouanScoot").
+3. Renseigne `GMAIL_USER` (ton adresse Gmail complète) et `GMAIL_APP_PASSWORD` (le mot de passe généré, 16 caractères sans espaces) dans `.env.local` (en local) et dans les variables d'environnement Vercel (en production).
 
-Si `RESEND_API_KEY` n'est pas configurée, la confirmation du statut fonctionne normalement mais aucun email n'est envoyé.
+Si `GMAIL_USER` / `GMAIL_APP_PASSWORD` ne sont pas configurés, la confirmation du statut fonctionne normalement mais aucun email n'est envoyé.
 
 ## Variables d'environnement
 
