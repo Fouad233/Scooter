@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { supabaseServer } from "@/lib/supabase/server";
 
 export async function PATCH(
@@ -32,6 +33,8 @@ export async function PATCH(
   if (body.vedette) {
     await supabaseServer.from("scooters").update({ vedette: false }).neq("id", id);
   }
+
+  revalidatePath("/");
 
   return NextResponse.json({ ok: true });
 }

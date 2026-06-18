@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { supabaseServer } from "@/lib/supabase/server";
 
 export async function POST(request: Request) {
@@ -29,6 +30,8 @@ export async function POST(request: Request) {
   if (body.vedette) {
     await supabaseServer.from("scooters").update({ vedette: false }).neq("id", data.id);
   }
+
+  revalidatePath("/");
 
   return NextResponse.json({ scooter: data });
 }
