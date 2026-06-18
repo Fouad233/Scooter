@@ -46,6 +46,17 @@ Depuis l'espace admin (`/admin/scooters`), ouvre un scooter (ou crée-en un) et 
 
 Prérequis (une seule fois) : dans Supabase, va dans **Storage** et crée un bucket nommé `scooters`, en mode **Public**. C'est dans ce bucket que les photos envoyées depuis l'admin seront stockées.
 
+## Email automatique au client à la confirmation
+
+Quand l'admin passe une réservation au statut "Confirmée" (`/admin`), un email de confirmation part automatiquement au client (dates, scooter, montant à régler sur place).
+
+Configuration (une seule fois) :
+1. Crée un compte gratuit sur [resend.com](https://resend.com) et génère une clé API (**API Keys**).
+2. Renseigne `RESEND_API_KEY` dans `.env.local` (en local) et dans les variables d'environnement Vercel (en production).
+3. Tant que tu n'as pas vérifié ton propre domaine sur Resend, laisse `RESEND_FROM_EMAIL=onboarding@resend.dev` (ça fonctionne pour tester, mais l'expéditeur affiché restera "resend.dev"). Pour un envoi avec ton propre nom de domaine, vérifie ton domaine sur Resend puis change cette variable (ex. `reservations@tetouanscoot.com`).
+
+Si `RESEND_API_KEY` n'est pas configurée, la confirmation du statut fonctionne normalement mais aucun email n'est envoyé.
+
 ## Variables d'environnement
 
 Voir `.env.example` pour la liste complète et leur description.
