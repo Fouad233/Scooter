@@ -8,6 +8,7 @@ export default async function AdminReservationsPage() {
   const { data: reservations } = await supabaseServer
     .from("reservations")
     .select("*, scooters(nom)")
+    .neq("statut", "cancelled")
     .order("created_at", { ascending: false });
 
   const liste = reservations ?? [];
