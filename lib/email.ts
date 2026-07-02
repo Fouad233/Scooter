@@ -6,6 +6,15 @@ function formaterDate(date: string) {
   return format(parseISO(date), "d MMMM yyyy", { locale: fr });
 }
 
+function htmlEscape(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function creerTransporteur() {
   const utilisateur = process.env.GMAIL_USER;
   const motDePasse = process.env.GMAIL_APP_PASSWORD;
@@ -41,8 +50,8 @@ export async function envoyerEmailConfirmation({
       to: destinataire,
       subject: "Votre réservation Badino est confirmée",
       html: `
-        <p>Bonjour ${clientNom},</p>
-        <p>Votre réservation pour le scooter <strong>${scooterNom}</strong> est confirmée :</p>
+        <p>Bonjour ${htmlEscape(clientNom)},</p>
+        <p>Votre réservation pour le scooter <strong>${htmlEscape(scooterNom)}</strong> est confirmée :</p>
         <ul>
           <li>Du ${formaterDate(dateDebut)} au ${formaterDate(dateFin)}</li>
           <li>Montant total à régler sur place : ${montantTotal} MAD</li>
