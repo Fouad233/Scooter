@@ -22,7 +22,7 @@ export default async function ModifierScooterPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-blue-950">Modifier {scooter.nom}</h1>
+      <h1 className="text-2xl font-bold text-zinc-950">Modifier {scooter.nom}</h1>
       <div className="mt-6">
         <ScooterForm scooter={scooter as Scooter} />
       </div>

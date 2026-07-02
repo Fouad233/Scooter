@@ -148,7 +148,7 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
               <div key={url} className="group relative aspect-square overflow-hidden rounded-lg border border-border">
                 <Image src={url} alt="" fill className="object-cover" unoptimized />
                 {index === 0 && (
-                  <span className="absolute left-1 top-1 rounded bg-blue-950/80 px-1.5 py-0.5 text-[10px] text-white">
+                  <span className="absolute left-1 top-1 rounded bg-zinc-950/80 px-1.5 py-0.5 text-[10px] text-white">
                     Principale
                   </span>
                 )}
@@ -178,7 +178,7 @@ export function ScooterForm({ scooter }: { scooter?: Scooter }) {
 
       {erreur && <p className="text-sm text-red-600">{erreur}</p>}
 
-      <Button type="submit" disabled={envoi} className="rounded-full bg-orange-500 hover:bg-orange-600">
+      <Button type="submit" disabled={envoi} className="rounded-full bg-rose-500 hover:bg-rose-600">
         {envoi ? "Enregistrement..." : "Enregistrer"}
       </Button>
     </form>

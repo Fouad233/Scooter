@@ -41,14 +41,14 @@ export function AvailabilityCalendar({ scooterId }: { scooterId: string }) {
 
   if (chargement) {
     return (
-      <div className="rounded-2xl border border-blue-900/10 p-6 text-sm text-blue-900/60">
+      <div className="rounded-2xl border border-zinc-200 p-6 text-sm text-zinc-800/60">
         Chargement des disponibilités...
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-blue-900/10 bg-white p-2">
+    <div className="rounded-2xl border border-zinc-200 bg-white p-2">
       <Calendar
         mode="multiple"
         locale={fr}
@@ -56,8 +56,8 @@ export function AvailabilityCalendar({ scooterId }: { scooterId: string }) {
         selected={[]}
         className="w-full"
       />
-      <div className="flex items-center gap-2 px-4 pb-3 text-xs text-blue-900/60">
-        <span className="inline-block size-3 rounded-full bg-blue-900/20" />
+      <div className="flex items-center gap-2 px-4 pb-3 text-xs text-zinc-800/60">
+        <span className="inline-block size-3 rounded-full bg-zinc-900/20" />
         Dates grisées = déjà réservées ou indisponibles
       </div>
     </div>

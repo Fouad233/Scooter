@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Conditions générales de location — TetouanScoot",
+  title: "Conditions générales de location — Badino",
 };
 
 export default function CglPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12">
-      <h1 className="text-3xl font-bold text-blue-950">
+      <h1 className="text-3xl font-bold text-zinc-950">
         Conditions générales de location
       </h1>
 
-      <div className="mt-8 space-y-6 text-sm text-blue-900/80">
+      <div className="mt-8 space-y-6 text-sm text-zinc-800/80">
         <section>
-          <h2 className="font-semibold text-blue-950">1. Réservation</h2>
+          <h2 className="font-semibold text-zinc-950">1. Réservation</h2>
           <p className="mt-2">
             Toute demande de réservation effectuée sur le site est soumise à
-            confirmation manuelle par TetouanScoot. Une réservation n&apos;est
+            confirmation manuelle par Badino. Une réservation n&apos;est
             considérée comme confirmée qu&apos;après accord de notre équipe,
             communiqué par email ou WhatsApp.
           </p>
         </section>
 
         <section>
-          <h2 className="font-semibold text-blue-950">2. Paiement</h2>
+          <h2 className="font-semibold text-zinc-950">2. Paiement</h2>
           <p className="mt-2">
             Le montant total de la location ainsi que la caution sont
             réglés intégralement sur place, en espèces ou par carte, au
@@ -33,7 +33,7 @@ export default function CglPage() {
         </section>
 
         <section>
-          <h2 className="font-semibold text-blue-950">3. Caution</h2>
+          <h2 className="font-semibold text-zinc-950">3. Caution</h2>
           <p className="mt-2">
             Une caution est exigée pour chaque location. Elle est
             intégralement restituée au retour du scooter, sous réserve que
@@ -43,7 +43,7 @@ export default function CglPage() {
         </section>
 
         <section>
-          <h2 className="font-semibold text-blue-950">4. Conditions pour louer</h2>
+          <h2 className="font-semibold text-zinc-950">4. Conditions pour louer</h2>
           <p className="mt-2">
             Le locataire doit être en possession d&apos;un permis de
             conduire valide adapté au type de scooter loué, ainsi que
@@ -53,7 +53,7 @@ export default function CglPage() {
         </section>
 
         <section>
-          <h2 className="font-semibold text-blue-950">5. Annulation</h2>
+          <h2 className="font-semibold text-zinc-950">5. Annulation</h2>
           <p className="mt-2">
             Toute annulation ou modification de réservation doit être
             communiquée le plus tôt possible via WhatsApp ou email. Aucun
@@ -63,7 +63,7 @@ export default function CglPage() {
         </section>
 
         <section>
-          <h2 className="font-semibold text-blue-950">6. Responsabilité</h2>
+          <h2 className="font-semibold text-zinc-950">6. Responsabilité</h2>
           <p className="mt-2">
             Le locataire est responsable du scooter pendant toute la durée
             de la location et s&apos;engage à respecter le code de la route

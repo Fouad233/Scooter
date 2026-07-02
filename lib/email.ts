@@ -37,9 +37,9 @@ export async function envoyerEmailConfirmation({
 
   try {
     await transporteur.sendMail({
-      from: `TetouanScoot <${process.env.GMAIL_USER}>`,
+      from: `Badino <${process.env.GMAIL_USER}>`,
       to: destinataire,
-      subject: "Votre réservation TetouanScoot est confirmée",
+      subject: "Votre réservation Badino est confirmée",
       html: `
         <p>Bonjour ${clientNom},</p>
         <p>Votre réservation pour le scooter <strong>${scooterNom}</strong> est confirmée :</p>
@@ -48,7 +48,7 @@ export async function envoyerEmailConfirmation({
           <li>Montant total à régler sur place : ${montantTotal} MAD</li>
         </ul>
         <p>Le paiement complet ainsi que la caution se règlent sur place, au moment de la prise du scooter.</p>
-        <p>À très vite !<br/>L'équipe TetouanScoot</p>
+        <p>À très vite !<br/>L'équipe Badino</p>
       `,
     });
     return { envoye: true };

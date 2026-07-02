@@ -5,7 +5,7 @@ const STYLES: Record<StatutReservation, string> = {
   pending: "bg-amber-100 text-amber-700",
   confirmed: "bg-blue-100 text-blue-700",
   paid: "bg-green-100 text-green-700",
-  completed: "bg-blue-900/10 text-blue-900/70",
+  completed: "bg-zinc-900/10 text-zinc-800/70",
   cancelled: "bg-red-100 text-red-700",
 };
 

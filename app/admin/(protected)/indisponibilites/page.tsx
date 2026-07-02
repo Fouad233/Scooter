@@ -19,13 +19,13 @@ export default async function AdminIndisponibilitesPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-blue-950">Indisponibilités</h1>
-      <p className="mt-1 text-sm text-blue-900/60">
+      <h1 className="text-2xl font-bold text-zinc-950">Indisponibilités</h1>
+      <p className="mt-1 text-sm text-zinc-800/60">
         Bloquez manuellement des dates pour un scooter (entretien, panne, etc.).
       </p>
 
       {listeScooters.length === 0 ? (
-        <p className="mt-6 text-blue-900/60">Ajoute d&apos;abord un scooter pour pouvoir bloquer des dates.</p>
+        <p className="mt-6 text-zinc-800/60">Ajoute d&apos;abord un scooter pour pouvoir bloquer des dates.</p>
       ) : (
         <div className="mt-6">
           <IndisponibiliteForm scooters={listeScooters} />
@@ -34,10 +34,10 @@ export default async function AdminIndisponibilitesPage() {
 
       <div className="mt-8 space-y-3">
         {liste.map((indispo) => (
-          <div key={indispo.id} className="flex items-center justify-between rounded-2xl border border-blue-900/10 bg-white p-4">
+          <div key={indispo.id} className="flex items-center justify-between rounded-2xl border border-zinc-200 bg-white p-4">
             <div>
-              <p className="font-semibold text-blue-950">{indispo.scooters?.nom ?? "Scooter supprimé"}</p>
-              <p className="text-sm text-blue-900/60">
+              <p className="font-semibold text-zinc-950">{indispo.scooters?.nom ?? "Scooter supprimé"}</p>
+              <p className="text-sm text-zinc-800/60">
                 {indispo.date_debut} → {indispo.date_fin}
                 {indispo.raison ? ` · ${indispo.raison}` : ""}
               </p>

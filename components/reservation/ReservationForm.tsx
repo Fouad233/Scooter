@@ -86,7 +86,7 @@ export function ReservationForm({ scooter }: { scooter: Scooter }) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <Label className="mb-2 block">Dates de location</Label>
-        <div className="rounded-2xl border border-blue-900/10 bg-white p-2">
+        <div className="rounded-2xl border border-zinc-200 bg-white p-2">
           <Calendar
             mode="range"
             locale={fr}
@@ -97,7 +97,7 @@ export function ReservationForm({ scooter }: { scooter: Scooter }) {
           />
         </div>
         {jours > 0 && (
-          <p className="mt-2 text-sm text-blue-900/70">
+          <p className="mt-2 text-sm text-zinc-800/70">
             Durée sélectionnée : <span className="font-semibold">{jours} jour{jours > 1 ? "s" : ""}</span>
           </p>
         )}
@@ -120,11 +120,11 @@ export function ReservationForm({ scooter }: { scooter: Scooter }) {
 
       {erreur && <p className="text-sm text-red-600">{erreur}</p>}
 
-      <Button type="submit" disabled={envoi} className="w-full rounded-full bg-orange-500 py-6 text-base hover:bg-orange-600">
+      <Button type="submit" disabled={envoi} className="w-full rounded-full bg-rose-500 py-6 text-base hover:bg-rose-600">
         {envoi ? "Envoi en cours..." : "Envoyer ma demande de réservation"}
       </Button>
 
-      <p className="text-xs text-blue-900/60">
+      <p className="text-xs text-zinc-800/60">
         Votre demande sera confirmée manuellement par notre équipe par email
         ou WhatsApp. Le paiement total et la caution se règlent sur place,
         au moment de la prise du scooter.

@@ -56,11 +56,11 @@ export default async function ScooterDetailPage({
         />
 
         <div>
-          <h1 className="text-3xl font-bold text-blue-950">{scooter.nom}</h1>
-          <p className="mt-1 text-blue-900/60">{scooter.modele}</p>
+          <h1 className="text-3xl font-bold text-zinc-950">{scooter.nom}</h1>
+          <p className="mt-1 text-zinc-800/60">{scooter.modele}</p>
 
           {scooter.description && (
-            <p className="mt-4 text-blue-900/80">{scooter.description}</p>
+            <p className="mt-4 text-zinc-800/80">{scooter.description}</p>
           )}
 
           <div className="mt-6">
@@ -69,7 +69,7 @@ export default async function ScooterDetailPage({
 
           <Link
             href={`/reservation/${scooter.id}`}
-            className="mt-6 inline-block w-full rounded-full bg-orange-500 px-6 py-3 text-center font-semibold text-white shadow-md transition-colors hover:bg-orange-600 sm:w-auto"
+            className="mt-6 inline-block w-full rounded-full bg-rose-500 px-6 py-3 text-center font-semibold text-white shadow-md transition-colors hover:bg-rose-600 sm:w-auto"
           >
             Réserver ce scooter
           </Link>
@@ -77,8 +77,8 @@ export default async function ScooterDetailPage({
       </div>
 
       <div className="mt-12">
-        <h2 className="text-xl font-bold text-blue-950">Disponibilités</h2>
-        <p className="mt-1 text-sm text-blue-900/60">
+        <h2 className="text-xl font-bold text-zinc-950">Disponibilités</h2>
+        <p className="mt-1 text-sm text-zinc-800/60">
           Consultez les dates déjà réservées avant de faire votre demande.
         </p>
         <div className="mt-4">

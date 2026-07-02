@@ -12,7 +12,7 @@ export function ScooterPhoto({
   if (!url) {
     return (
       <div
-        className={`flex items-center justify-center bg-blue-900/5 text-blue-900/30 ${className ?? ""}`}
+        className={`flex items-center justify-center bg-zinc-900/5 text-zinc-800/30 ${className ?? ""}`}
       >
         Photo à venir
       </div>

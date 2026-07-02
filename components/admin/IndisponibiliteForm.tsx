@@ -41,14 +41,14 @@ export function IndisponibiliteForm({ scooters }: { scooters: Scooter[] }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-4 rounded-2xl border border-blue-900/10 bg-white p-4 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="grid gap-4 rounded-2xl border border-zinc-200 bg-white p-4 sm:grid-cols-2">
       <div>
         <Label htmlFor="scooter" className="mb-2 block">Scooter</Label>
         <select
           id="scooter"
           value={scooterId}
           onChange={(e) => setScooterId(e.target.value)}
-          className="w-full rounded-md border border-blue-900/20 px-3 py-2 text-sm"
+          className="w-full rounded-md border border-zinc-300 px-3 py-2 text-sm"
         >
           {scooters.map((scooter) => (
             <option key={scooter.id} value={scooter.id}>{scooter.nom}</option>
@@ -70,7 +70,7 @@ export function IndisponibiliteForm({ scooters }: { scooters: Scooter[] }) {
 
       {erreur && <p className="text-sm text-red-600 sm:col-span-2">{erreur}</p>}
 
-      <Button type="submit" disabled={envoi} className="rounded-full bg-orange-500 hover:bg-orange-600 sm:col-span-2">
+      <Button type="submit" disabled={envoi} className="rounded-full bg-rose-500 hover:bg-rose-600 sm:col-span-2">
         {envoi ? "Ajout..." : "Bloquer ces dates"}
       </Button>
     </form>

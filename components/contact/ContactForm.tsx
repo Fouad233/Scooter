@@ -38,11 +38,11 @@ export function ContactForm() {
         />
       </div>
 
-      <Button type="submit" className="w-full rounded-full bg-orange-500 py-6 text-base hover:bg-orange-600">
+      <Button type="submit" className="w-full rounded-full bg-rose-500 py-6 text-base hover:bg-rose-600">
         Envoyer sur WhatsApp
       </Button>
 
-      <p className="text-xs text-blue-900/60">
+      <p className="text-xs text-zinc-800/60">
         Le message s&apos;ouvre directement dans WhatsApp pour une réponse rapide.
       </p>
     </form>

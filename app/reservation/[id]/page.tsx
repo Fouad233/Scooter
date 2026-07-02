@@ -33,8 +33,8 @@ export default async function ReservationPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-3xl font-bold text-blue-950">Réserver le {scooter.nom}</h1>
-      <p className="mt-2 text-blue-900/70">
+      <h1 className="text-3xl font-bold text-zinc-950">Réserver le {scooter.nom}</h1>
+      <p className="mt-2 text-zinc-800/70">
         {scooter.prix_jour} MAD / jour · Caution {scooter.caution} MAD
       </p>
 

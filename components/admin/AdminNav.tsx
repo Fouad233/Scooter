@@ -21,15 +21,15 @@ export function AdminNav() {
   }
 
   return (
-    <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-blue-900/10 pb-4">
+    <nav className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-200 pb-4">
       <div className="flex gap-4">
         {liens.map((lien) => (
           <Link
             key={lien.href}
             href={lien.href}
             className={cn(
-              "text-sm font-semibold text-blue-900/60 hover:text-blue-950",
-              pathname === lien.href && "text-blue-950"
+              "text-sm font-semibold text-zinc-800/60 hover:text-zinc-950",
+              pathname === lien.href && "text-zinc-950"
             )}
           >
             {lien.label}
@@ -38,7 +38,7 @@ export function AdminNav() {
       </div>
       <button
         onClick={handleLogout}
-        className="text-sm font-semibold text-blue-900/60 hover:text-blue-950"
+        className="text-sm font-semibold text-zinc-800/60 hover:text-zinc-950"
       >
         Déconnexion
       </button>

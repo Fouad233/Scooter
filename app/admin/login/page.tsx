@@ -39,7 +39,7 @@ export default function AdminLoginPage() {
 
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-sm flex-col items-center justify-center px-4">
-      <h1 className="text-2xl font-bold text-blue-950">Espace administrateur</h1>
+      <h1 className="text-2xl font-bold text-zinc-950">Espace administrateur</h1>
       <form onSubmit={handleSubmit} className="mt-6 w-full space-y-4">
         <div>
           <Label htmlFor="motDePasse" className="mb-2 block">Mot de passe</Label>
@@ -52,7 +52,7 @@ export default function AdminLoginPage() {
           />
         </div>
         {erreur && <p className="text-sm text-red-600">{erreur}</p>}
-        <Button type="submit" disabled={envoi} className="w-full rounded-full bg-orange-500 hover:bg-orange-600">
+        <Button type="submit" disabled={envoi} className="w-full rounded-full bg-rose-500 hover:bg-rose-600">
           {envoi ? "Connexion..." : "Se connecter"}
         </Button>
       </form>

@@ -11,11 +11,11 @@ export function ScooterSpecs({ scooter }: { scooter: Scooter }) {
   ];
 
   return (
-    <dl className="grid grid-cols-2 gap-4 rounded-2xl border border-blue-900/10 bg-blue-900/5 p-5 text-sm">
+    <dl className="grid grid-cols-2 gap-4 rounded-2xl border border-zinc-200 bg-zinc-900/5 p-5 text-sm">
       {lignes.map((ligne) => (
         <div key={ligne.label}>
-          <dt className="text-blue-900/60">{ligne.label}</dt>
-          <dd className="font-semibold text-blue-950">{ligne.valeur}</dd>
+          <dt className="text-zinc-800/60">{ligne.label}</dt>
+          <dd className="font-semibold text-zinc-950">{ligne.valeur}</dd>
         </div>
       ))}
     </dl>

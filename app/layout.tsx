@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-const titre = "TetouanScoot — Location de scooters à Tétouan";
+const titre = "Badino — Location de scooters à Tétouan";
 const description =
-  "Louez un scooter à Tétouan en toute simplicité : réservation en ligne, paiement et caution sur place.";
+  "Loue un scooter à Tétouan en toute simplicité : réservation en ligne, paiement et caution sur place.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: titre,
     description,
     url: siteUrl,
-    siteName: "TetouanScoot",
+    siteName: "Badino",
     locale: "fr_FR",
     type: "website",
   },
